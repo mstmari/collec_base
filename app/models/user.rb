@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :user_books
   has_many :books, :through => :user_books
 
-  validates presence_of :name
-  validates :name, presence: true
+  validates :name, :presence => {:message => 'Name cannot be blank, User not saved'}
 
 end
