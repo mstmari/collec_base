@@ -1,6 +1,18 @@
 <h1>Hello</h1>
 
 
+
 <%= link_to 'Sign-In', '/signin' %>
 <br>
 <%= link_to 'Signup', '/signup' %>
+
+<br>
+<% if session[:user_id] %>
+  <h1><%= @user.name %></h1>
+  <h2>Email: <%= @user.email %></h2>
+  <h2>Facebook UID: <%= @user.uid %></h2>
+  <img src="<%= @user.image %>">
+
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>

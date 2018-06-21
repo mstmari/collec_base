@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get  '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'sessions#create_facebook'
+
 
   resources :books
   resources :user_books
