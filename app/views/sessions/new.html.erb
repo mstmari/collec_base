@@ -1,7 +1,9 @@
 
 <%= form_for @user, url: signin_path do |f| %>
-<%= f.collection_select(:name, User.all, :name, :name) %>
+<%= f.label :name %>
+<%= f.text_field :name, id: "name" %>
+
 <%= f.label :password %>
-<%= f.text_field :password, id: "password" %>
-<%= f.submit 'Sign In' %>
+<%= f.password_field :password, id: "password" %>
+<%= f.submit 'Sign In', :html => {:class => 'btn btn-outline-primary'} %><%# if     @contact.errors.any? %>
 <% end %>
