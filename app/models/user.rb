@@ -5,5 +5,7 @@ class User < ApplicationRecord
   has_many :books, :through => :user_books
 
   validates :name, presence: true
+  validates :password, length: { in: 6..20 }
+
 
 end
