@@ -22,6 +22,22 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    @book.update(book_params)
+
+    if @book.save
+      redirect_to @book
+    else
+      render :edit
+    end
+  end
+
   private
   def book_params
     params.require(:book).permit(:title, :author, :volume_number)
