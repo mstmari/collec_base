@@ -1,19 +1,26 @@
-<% binding.pry %>
-<%= form_for @book do |f| %>
-<%= f.label "Price" %>
-<%= f.text_field :price %>
-<%= f.label "Description" %>
-<%= f.text_area :description %>
-<%= f.label "Condition" %>
-<%= f.text_area :condition %>
-<%= f.collection_select :books, Book.all, :id, :name %>
-<%= f.submit %>
-<% end %>
-
 <%= form_for @book do |f| %>
 
-  <%= render :partial => 'form', :locals=> {:f=>f} %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+  <br>
+  <%= f.label :volume_number %>
+  <%= f.text_field :volume_number %>
+  <br>
+  <br>
+
+ <%= f.fields_for :userbook do |userbook_builder| %>
+ <%= userbook_builder.label :condition %>
+ <%= userbook_builder.text_field :condition %>
 <br>
-<%= f.submit 'Add Book' %>
-
+<%= userbook_builder.label :description %>
+<%= userbook_builder.text_field :description %>
+<br>
+<%= userbook_builder.label :price %>
+<%= userbook_builder.text_field :price %>
+<br>
+ <%= f.submit 'Add Book' %>
+ <% end %>
 <% end %>

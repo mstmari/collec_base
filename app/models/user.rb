@@ -7,11 +7,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, length: { in: 6..20 }
 
-  # def user_book_attributes=(book_attributes)
-	#    book_attributes.each do |book_attribute|
-	#       self.books.build(book_attribute)
-  #    end
-  # end
+  
+
+  # or use #accepts_nested_attributes_for :book
 
 
 end
