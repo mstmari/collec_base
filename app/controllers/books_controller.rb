@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  # before_action :require_login, only: [:new, :create]
 
   def new
     @book = Book.new
