@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#create_facebook'
 
-  resources :user_books
-  resources :users do
-     resources :books
-   end
+  resources :users
+  resources :books do
+    resources :user_books
+
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

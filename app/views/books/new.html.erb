@@ -1,13 +1,14 @@
-<!-- # <%= form_for [@users, @books] do |f| %>
-# <%= f.label "Price" %>
-# <%= f.text_field :price %>
-# <%= f.label "Description" %>
-# <%= f.text_area :description %>
-# <%= f.label "Condition" %>
-# <%= f.text_area :condition %>
-# <%= f.collection_select :patient, Book.all, :id, :name %>
-# <%= f.submit %>
-# <% end %> -->
+<% binding.pry %>
+<%= form_for @book do |f| %>
+<%= f.label "Price" %>
+<%= f.text_field :price %>
+<%= f.label "Description" %>
+<%= f.text_area :description %>
+<%= f.label "Condition" %>
+<%= f.text_area :condition %>
+<%= f.collection_select :books, Book.all, :id, :name %>
+<%= f.submit %>
+<% end %>
 
 <%= form_for @book do |f| %>
 
