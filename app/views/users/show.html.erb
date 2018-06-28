@@ -1,18 +1,18 @@
 <h1>Welcome, <%= current_user.name %></h1>
 <h3>Here are all of your books</h3>
 <ul>
-  <%= current_user.user_books.map do |book| %>
-  <%= i = Book.find(book.id)%>
-   <li><%= i.title  %></li>
-   <li><%= i.author  %></li>
-   <li><%= book.condition  %></li>
-   <li><%= book.description  %></li>
-   <li><%= book.price  %></li>
-
+  <%= current_user.user_books.map.with_index(0) do |user_book, i| %>
+<strong><%= i %></strong>
+   <li>Book Title: <%= user_book.book.title  %></li>
+   <li>Book Author: <%= user_book.book.author  %></li>
+   <li>Condition: <%= user_book.condition  %></li>
+   <li>Description: <%= user_book.description  %></li>
+   <li>Price: <%= user_book.price  %></li>
 
   <hr>
 
   <% end %>
 </ul>
-
+<%= link_to 'Add A Book', '/books/new' %>
+<br>
 <%= button_to 'Logout', '/logout' %>
