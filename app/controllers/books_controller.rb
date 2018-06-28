@@ -24,9 +24,13 @@ class BooksController < ApplicationController
       current_user.user_books.last.save
       redirect_to current_user
     else
-      @book = Book.new(book_params)
+      @book = Book.new(title: params[:book][:title])
+        current_user.user_books.build(book_id: book.id,
+        condition: params[:book][:userbook][:condition],
+        description: params[:book][:userbook][:description],
+        price: params[:book][:userbook][:price])
         if @book.save
-      redirect_to book_path(@book)
+      redirect_to current_user
         else
           render 'new'
         end
