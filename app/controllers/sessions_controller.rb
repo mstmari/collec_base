@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if
       user = User.find_by(name: params[:user][:name])
-      user && user.authenticate(params[:user][:password])
+
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
 
       redirect_to user_path(user)
@@ -31,9 +31,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     session[:user_id] = nil
-    binding.pry
     redirect_to root_url
 
   end

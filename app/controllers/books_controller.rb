@@ -22,7 +22,7 @@ class BooksController < ApplicationController
       condition: params[:book][:userbook][:condition],
       description: params[:book][:userbook][:description],
       price: params[:book][:userbook][:price])
-
+      binding.pry
       current_user.user_books.last.save
       binding.pry
       redirect_to current_user
@@ -34,12 +34,13 @@ class BooksController < ApplicationController
         if book.save
           binding.pry
 
-        current_user.user_books.build(book_id: book.id,
+        current_user.user_books.create(book_id: book.id,
         condition: params[:book][:userbook][:condition],
         description: params[:book][:userbook][:description],
         price: params[:book][:userbook][:price])
         binding.pry
-        current_user.user_books.save
+
+        current_user.user_books.last.save
 
         redirect_to current_user
 

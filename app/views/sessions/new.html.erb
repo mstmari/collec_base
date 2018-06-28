@@ -1,8 +1,8 @@
 <h1>Welcome Back!</h1>
-<%= form_for @user do |f| %>
+<%= form_for @user, url: signin_path do |f| %>
 
   <%= render :partial => 'users/form', :locals=> {:f=>f} %>
 
 
-<%= f.submit 'Sign In', :html => {:class => 'btn btn-outline-primary'} %><%# if     @contact.errors.any? %>
+<%= f.submit 'Sign In', :html => {:class => 'btn btn-outline-primary'} %>
 <% end %>
