@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def create_facebook
     user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
@@ -31,13 +30,10 @@ class SessionsController < ApplicationController
     redirect_to user_path(user)
   end
 
-
-
-
-
-
   def destroy
+    binding.pry
     session[:user_id] = nil
+    binding.pry
     redirect_to root_url
 
   end

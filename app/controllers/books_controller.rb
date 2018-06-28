@@ -24,7 +24,7 @@ class BooksController < ApplicationController
       price: params[:book][:userbook][:price])
 
       current_user.user_books.last.save
-
+      binding.pry
       redirect_to current_user
 
     else
@@ -38,8 +38,8 @@ class BooksController < ApplicationController
         condition: params[:book][:userbook][:condition],
         description: params[:book][:userbook][:description],
         price: params[:book][:userbook][:price])
-
-        current_user.user_books.last.save
+        binding.pry
+        current_user.user_books.save
 
         redirect_to current_user
 

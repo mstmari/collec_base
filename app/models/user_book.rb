@@ -6,5 +6,4 @@ class UserBook < ApplicationRecord
   validates :condition, presence: true
 
 
-
 end
