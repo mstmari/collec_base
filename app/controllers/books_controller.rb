@@ -22,6 +22,7 @@ class BooksController < ApplicationController
       condition: params[:book][:userbook][:condition],
       description: params[:book][:userbook][:description],
       price: params[:book][:userbook][:price])
+
       current_user.user_books.last.save
 
       redirect_to current_user
@@ -37,6 +38,7 @@ class BooksController < ApplicationController
         condition: params[:book][:userbook][:condition],
         description: params[:book][:userbook][:description],
         price: params[:book][:userbook][:price])
+
         current_user.user_books.last.save
 
         redirect_to current_user
