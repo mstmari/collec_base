@@ -1,5 +1,5 @@
 <h1>Welcome, <%= @user.name %></h1>
-
-<%= link_to 'see all my books', '/books' %>
-
+<%= current_user.user_books.each do |book| %>
+<%= i = Book.find_by(id: book.book_id) %>
+<% end %>
 <%= button_to 'Logout', '/logout' %>

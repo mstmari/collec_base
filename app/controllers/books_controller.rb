@@ -16,20 +16,20 @@ class BooksController < ApplicationController
 
 
   def create
-    if book = Book.find_by(title: book_params[:title])
+    if book = Book.find_by(title: params[:book][:title])
       current_user.user_books.build(book_id: book.id,
       condition: params[:book][:userbook][:condition],
       description: params[:book][:userbook][:description],
       price: params[:book][:userbook][:price])
-
       current_user.user_books.last.save
-    end
-    binding.pry
-    @book = Book.new(book_params)
-    if @book.save
-      redirect_to book_path(@book)
+      redirect_to current_user
     else
-      render 'new'
+      @book = Book.new(book_params)
+        if @book.save
+      redirect_to book_path(@book)
+        else
+          render 'new'
+        end
     end
   end
 
@@ -51,7 +51,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :volume_number, :userbook => [ :condition, :description, :price])
+    params.require(:book).permit(:title, :author, :volume_number)
   end
-
+# , :userbook => [ :condition, :description, :price]
 end
