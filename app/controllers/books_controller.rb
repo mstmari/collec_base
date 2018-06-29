@@ -16,26 +16,28 @@ class BooksController < ApplicationController
 
 
   def create
-    if book = Book.find_by(title: params[:book][:title])
-
-      current_user.user_books.create(book_id: book.id,
-      condition: params[:book][:userbook][:condition],
-      description: params[:book][:userbook][:description],
-      price: params[:book][:userbook][:price])
-
+    # binding.pry
+    if book = Book.find_by(title: book_params[:title])
+      #  binding.pry
+      book.user_books.build(book_params[:user_books_attributes])
+      # current_user.user_books.create(book_id: book.id,
+      # condition: params[:book][:userbook][:condition],
+      # description: params[:book][:userbook][:description],
+      # price: params[:book][:userbook][:price])
+      book.save
+      current_user.user_books << book.user_books
       redirect_to current_user
 
     else
-
-      book = Book.new(title: params[:book][:title],
-      author: params[:book][:author])
+      book = Book.new(title: book_params[:title], author: book_params[:author], volume_number: book_params[:volume_number])
         if book.save
+          book.user_books.build(book_params[:user_books_attributes])
+        # current_user.user_books.create(book_id: book.id,
+        # condition: params[:book][:userbook][:condition],
+        # description: params[:book][:userbook][:description],
+        # price: params[:book][:userbook][:price])
+        current_user.user_books << book.user_books
 
-        current_user.user_books.create(book_id: book.id,
-        condition: params[:book][:userbook][:condition],
-        description: params[:book][:userbook][:description],
-        price: params[:book][:userbook][:price])
-        
 
         redirect_to current_user
 
@@ -63,7 +65,9 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :volume_number)
+    params.require(:book).permit(:title, :author, :volume_number, :user_books_attributes =>[:condition, :description, :price])
+
   end
-# , :userbook => [ :condition, :description, :price]
+#:title, :author, :volume_number, {:user_books_attributes =>
+# [ :condition, :description, :price]})
 end
