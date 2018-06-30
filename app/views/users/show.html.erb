@@ -6,17 +6,17 @@
 <ul>
   <%= current_user.user_books.map.with_index(0) do |user_book, i| %>
 <strong><%= i %></strong>
-   <li>Book Title: <%= user_book.book.title  %></li>
-   <li>Book Author: <%= user_book.book.author  %></li>
-   <li>Condition: <%= user_book.condition  %></li>
-   <li>Description: <%= user_book.description  %></li>
+   <li>Book Title: <%= user_book.book.title %></li>
+   <li>Book Author: <%= user_book.book.author %></li>
+   <li>Condition: <%= user_book.condition %></li>
+   <li>Description: <%= user_book.description %></li>
    <li>Price: <%= user_book.price  %></li>
-  <hr>
+   <br>
   <% end %>
 <% end %>
 </ul>
-<%= link_to 'Add A Book', '/books/new' %>
-<br>
-<%= link_to 'See All Books', '/books' %>
-<br>
-<%= button_to 'Logout', '/logout' %>
+ <%= link_to 'Add A Book', '/books/new' %>
+ <br>
+ <%= link_to 'See All Books', '/books' %>
+ <br>
+ <%= button_to 'Logout', '/logout' %>

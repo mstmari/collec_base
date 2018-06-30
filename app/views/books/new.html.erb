@@ -1,5 +1,4 @@
-<% binding.pry %>
-<%= form_for @book do |f| %>
+<%= form_for @book, :as => :book do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
