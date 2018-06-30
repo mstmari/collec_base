@@ -1,3 +1,4 @@
+<% binding.pry %>
 <%= form_for @book do |f| %>
 
   <%= f.label :title %>
@@ -11,7 +12,7 @@
   <br>
   <br>
 
- <%= f.fields_for :user_books_attributes do |userbook_builder| %>
+ <%= f.fields_for :user_book_attributes do |userbook_builder| %>
  <%= userbook_builder.label :condition %>
  <%= userbook_builder.text_field :condition %>
 <br>

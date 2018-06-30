@@ -5,9 +5,9 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
 
-   accepts_nested_attributes_for :user_books
+    accepts_nested_attributes_for :user_books
 
-  # def user_book_attributes=(user_books_attributes)
+  # def user_book_attributes=(user_book_attribute)
   #   # binding.pry
   #   raise user_books_attributes.inspect
 	#    user_books_attributes.each do |book_attribute|
