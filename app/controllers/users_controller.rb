@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def index
+  def welcome
     if logged_in?
       redirect_to current_user
     else

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'users#welcome'
 
 
   get  '/signup' => 'users#new'
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :books
     resources :user_books
 
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
