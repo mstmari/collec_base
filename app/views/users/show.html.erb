@@ -11,7 +11,9 @@
    <li>Condition: <%= user_book.condition %></li>
    <li>Description: <%= user_book.description %></li>
    <li>Price: <%= user_book.price  %></li>
+   <%= link_to 'Edit My Copy', [:edit, user_book] %>
    <br>
+<hr>
   <% end %>
 <% end %>
 </ul>

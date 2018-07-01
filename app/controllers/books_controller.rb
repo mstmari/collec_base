@@ -2,9 +2,8 @@ class BooksController < ApplicationController
   # before_action :require_login, only: [:new, :create]
 
   def new
-
     @book = Book.new
-    binding.pry
+    # @book.user_book.build
   end
 
   def index
@@ -17,6 +16,7 @@ class BooksController < ApplicationController
 
 
   def create
+    binding.pry
     if book = Book.find_by(title: book_params[:title])
       this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
       current_user.save
@@ -24,7 +24,8 @@ class BooksController < ApplicationController
       redirect_to current_user
 
     else
-      book = Book.new(title: book_params[:title], author: book_params[:author], volume_number: book_params[:volume_number])
+      binding.pry
+      book = Book.new(book_params)
         if book.save
           this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
           current_user.save
