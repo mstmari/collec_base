@@ -2,12 +2,12 @@ class BooksController < ApplicationController
   # before_action :require_login, only: [:new, :create]
 
   def new
+
     @book = Book.new
-    # @book.user_book.build
   end
 
   def index
-    @books = Book.all
+    @books = current_user.user_books
   end
 
   def show

@@ -8,13 +8,16 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get  '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
-  # post '/user_books/new' => 'user_books#new'
+
 
   get '/auth/facebook/callback' => 'sessions#create_facebook'
 
-  resources :users
+  resources :users do
+    resources :books, only: [:show, :index]
+  end
+
+  resources :user_books
   resources :books
-    resources :user_books
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

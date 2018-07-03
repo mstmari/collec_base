@@ -5,12 +5,14 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
 
-  
+
   def user_book_attributes=(user_book_attribute)
+    binding.pry
     user_book_attribute.each do |book_attribute|
       self.user_books.build(book_attribute)
      end
   end
+
 
 
 end

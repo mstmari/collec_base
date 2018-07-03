@@ -1,9 +1,10 @@
 <h1>All Books</h1>
 <ul>
+  <% binding.pry %>
 <% @books.each do |book| %>
  <li>Title: <%= book.title %></li>
  <li>Author: <%= book.author %></li>
 <br>
 <% end %>
-<%= link_to 'back to my books', user_path(current_user) %> 
+<%= link_to 'back to my books', user_path(current_user) %>
 </ul>
