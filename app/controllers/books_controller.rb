@@ -2,18 +2,21 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    2.times { @book.user_books.build }
+    @book.user_books.build
     # @book.user_books.user_id = current_user.id
   end
 
   def index
-    @books = current_user.books
+    if params[:id]
+    @books = User.find(params[:id]).books
+    else
+      @books = Book.all
   end
+end
 
   def show
-     binding.pry
       @book = Book.find(params[:id])
-      @book
+      @userbook = @book.user_books
   end
 
 

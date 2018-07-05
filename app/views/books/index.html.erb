@@ -4,13 +4,14 @@
 
 <% else %>
 <h3>Here are all of your books</h3>
+<% binding.pry %>
 <ul>
   <%= @books.map.with_index(0) do |book, i| %>
 <strong><%= i %></strong>
 
    <li>Book Title: <%= book.title %></li>
    <li>Book Author: <%= book.author %></li>
-   
+   <li> <%= link_to book_path %> </li>
    <br>
 <hr>
   <% end %>
