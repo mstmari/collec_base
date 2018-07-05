@@ -5,12 +5,12 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
 
+  accepts_nested_attributes_for :user_books, reject_if: :all_blank
 
-  def user_book_attributes=(user_book_attribute)
-    binding.pry
-    user_book_attribute.each do |book_attribute|
-      self.user_books.build(book_attribute)
-     end
+  def user_book_attributes=(user_book_attributes)
+
+      i = self.user_books.build(user_book_attributes)
+      binding.pry
   end
 
 

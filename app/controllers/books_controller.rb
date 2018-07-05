@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
-  # before_action :require_login, only: [:new, :create]
 
   def new
-
     @book = Book.new
+    2.times { @book.user_books.build }
+    # @book.user_books.user_id = current_user.id
   end
 
   def index
-    @books = current_user.user_books
+    binding.pry
+    @books = current_user.books
   end
 
   def show
@@ -24,8 +25,9 @@ class BooksController < ApplicationController
       redirect_to current_user
 
     else
-      binding.pry
+      # binding.pry
       book = Book.new(book_params)
+      binding.pry
         if book.save
           this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
           current_user.save
@@ -34,7 +36,7 @@ class BooksController < ApplicationController
         redirect_to current_user
 
         else
-          render 'new'
+          redirect_to '/'
         end
     end
   end
@@ -59,7 +61,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :volume_number, :user_book_attributes =>[:condition, :description, :price])
+    params.require(:book).permit(:title, :author, :volume_number, :user_book_attributes =>[:condition, :description, :price, :user_id])
 
   end
 
