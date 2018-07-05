@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get  '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
-
+  get 'users/:id/books' => 'books#index'
+  get 'users/:id/books/:id' => 'books#show'
 
   get '/auth/facebook/callback' => 'sessions#create_facebook'
 
   resources :users do
-    resources :books
+    resources :books, only: [:show, :index, :new, :edit]
   end
-  resources :books
 
 
 

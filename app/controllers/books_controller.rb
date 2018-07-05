@@ -7,12 +7,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    binding.pry
     @books = current_user.books
   end
 
   def show
+     binding.pry
       @book = Book.find(params[:id])
+      @book
   end
 
 

@@ -1,4 +1,4 @@
-<% binding.pry %>
+<!-- <% binding.pry %> -->
 <%= form_for @book do |f| %>
 
   <%= f.label :title %>
@@ -13,7 +13,7 @@
   <br>
 
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>
- <% binding.pry %>
+ <!-- <% binding.pry %> -->
  <%= userbook_builder.hidden_field :user_id, user_id: current_user.id %>
 
 
