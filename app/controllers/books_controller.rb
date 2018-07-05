@@ -7,8 +7,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    if params[:id]
-    @books = User.find(params[:id]).books
+    if params[:user_id]
+    @books = User.find(params[:user_id]).books
     else
       @books = Book.all
   end
@@ -16,12 +16,12 @@ end
 
   def show
       @book = Book.find(params[:id])
-      @userbook = @book.user_books
+      @userbook = current_user.user_books.where(:book_id => @book.id)
+
   end
 
 
   def create
-    binding.pry
     if book = Book.find_by(title: book_params[:title])
       this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
       current_user.save

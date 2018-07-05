@@ -7,8 +7,5 @@ class UserBook < ApplicationRecord
   end
 
 
-  def self.find_user_book(id)
-    binding.pry
-    self.find_by(book_id: id)
-  end
+  
 end

@@ -3,19 +3,22 @@
  <h3>By: <%= @book.author %></h3>
  <h5>Volume: <%= @book.volume_number %></h5>
  <hr>
-<h4>My Copy:</h4>
+<h4>My Version(s):</h4>
   <%= @userbook.map.with_index(1) do |book, i| %>
   <div>
-    <%= i %>
+    <strong>Copy Number: </strong><%= i %>
     <br>
-    <%= book.condition %>
+    <strong>Condition: </strong><%= book.condition %>
     <br>
-    <%= book.description %>
+    <strong>Description: </strong><%= book.description %>
     <br>
-    <%= book.price %>
+    <strong>Price: </strong><%= book.price %>
   </div>
+  <br>
   <% end %>
-
 
 <br>
 <hr>
+
+
+<%= link_to 'My Profile', current_user %>
