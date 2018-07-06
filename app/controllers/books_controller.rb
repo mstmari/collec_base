@@ -22,20 +22,19 @@ end
 
 
   def create
-    if book = Book.find_by(title: book_params[:title])
-      this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
-      current_user.save
-      book.user_books << this_user_book
+    if
+      book = Book.find_by(title: book_params[:title])
+      current_user.user_books << book.user_books
+
+        current_user.save
+
       redirect_to current_user
 
     else
-      # binding.pry
       book = Book.new(book_params)
-      binding.pry
+        current_user.user_books << book.user_books
         if book.save
-          this_user_book = current_user.user_books.build(book_params[:user_book_attributes])
           current_user.save
-          book.user_books << this_user_book
 
         redirect_to current_user
 
