@@ -8,7 +8,6 @@ class BooksController < ApplicationController
 
   def index
     if params[:user_id]
-      binding.pry
     @books = User.find(params[:user_id]).books.uniq
     else
       @books = Book.all
@@ -25,6 +24,7 @@ end
   def create
     if
       book = Book.find_by(title: book_params[:title])
+      binding.pry
       this_user_book = book.user_books.build(book_params[:user_book_attributes])
 
       current_user.user_books << this_user_book
@@ -52,12 +52,20 @@ end
   end
 
   def update
-    @book = Book.find(params[:id])
+    book = Book.find(params[:id])
+    binding.pry
+    userbook = current_user.user_books.find_by(:book_id => book_params[:book_id])
 
-    @book.update(book_params)
+    userbook.update(book_params[:user_book_attributes])
+    book.update(book_params)
 
-    if @book.save
-      redirect_to @book
+    current_user.user_books << userbook
+
+      current_user.save
+
+
+    if book.save
+      redirect_to book
     else
       render :edit
     end
@@ -67,7 +75,7 @@ end
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :volume_number, :user_book_attributes =>[:condition, :description, :price, :user_id])
+    params.require(:book).permit(:title, :author, :volume_number, :user_book_attributes =>[:condition, :description, :price, :user_id, :book_id])
 
   end
 
