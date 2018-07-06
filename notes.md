@@ -20,3 +20,5 @@ left to do -
 -fix partial so you can edit book/user_book on the edit form (you will need to look in the boks controller)
 
 - fix the #create method
+
+-find a way to filter duplicates on book index view 
