@@ -12,6 +12,8 @@
    <li>Book Author: <%= book.author %></li>
     <%= link_to 'View My Copy', user_book_path(id: book.id) %>
    <br>
+   <%= link_to 'Add a New Book', new_user_book_path(current_user) %>
+   
 <hr>
   <% end %>
 <% end %>
