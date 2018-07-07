@@ -1,16 +1,17 @@
-<% binding.pry %>
 <% if @book.errors.any? %>
 
-<h5>
-  <%= pluralize(@book.errors.count, "error") %>
-  Kept This Book from being Added to your Collection:
-</h5>
+  <div id="error_explanation">
+    <h5>
+      <%= pluralize(@book.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h5>
 
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <ul>
+    <% @book.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     <% end %>
-  </ul>
+    </ul>
+  </div>
 <% end %>
 
 <%= f.label :title %>

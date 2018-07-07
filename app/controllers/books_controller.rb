@@ -32,13 +32,15 @@ class BooksController < ApplicationController
     else
       @book = Book.new(book_params)
       current_user.user_books << @book.user_books
+      binding.pry
       if @book.save
+        binding.pry
         current_user.save
 
         redirect_to current_user
 
       else
-        redirect_to '/'
+        render 'new'
       end
     end
   end
