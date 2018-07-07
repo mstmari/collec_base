@@ -1,3 +1,18 @@
+<% binding.pry %>
+<% if @book.errors.any? %>
+
+<h5>
+  <%= pluralize(@book.errors.count, "error") %>
+  Kept This Book from being Added to your Collection:
+</h5>
+
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= f.label :title %>
 <%= f.text_field :title %>
 <br>

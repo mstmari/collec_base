@@ -1,11 +1,22 @@
+<% if current_user.user_books == [] %>
+ <strong><%= "You don't have any books yet!" %></strong>
+ <br>
+<% else %>
+
 <ul>
   <%= @most_valuble.map do |userbook| %>
   <li><strong>Title:</strong> <%= userbook.book.title %></li>
   <li><strong>Author:</strong> <%= userbook.book.author %></li>
+  <li><strong>Description:</strong> <%= userbook.description %></li>
+  <li><strong>Condition:</strong> <%= userbook.condition %></li>
+  <br>
   <li><strong>Price:</strong> <%= userbook.price %></li>
 
   <br>
-  <%= link_to 'View in My Collection', user_book_path(current_user, userbook) %>
-
   <% end %>
-</ul>
+<% end %>
+
+  </ul>
+  <%= link_to 'View My Collection', user_books_path(current_user) %>
+  <br>
+  <%= link_to 'Back to My Profile', user_path(current_user) %>

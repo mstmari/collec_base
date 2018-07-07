@@ -9,21 +9,18 @@ class BooksController < ApplicationController
       @books = User.find(params[:user_id]).books.uniq
     else
       @books = Book.all
-
     end
   end
 
   def show
-    binding.pry
     @book = Book.find(params[:id])
     @userbook = current_user.user_books.where(:book_id => @book.id)
-
   end
 
 
   def create
     if
-      book = Book.find_by(title: book_params[:title])
+      @book = Book.find_by(title: book_params[:title])
       new_user_book = book.user_books.build(book_params[:user_book_attributes])
 
       current_user.user_books << new_user_book
@@ -33,9 +30,9 @@ class BooksController < ApplicationController
       redirect_to current_user
 
     else
-      book = Book.new(book_params)
-      current_user.user_books << book.user_books
-      if book.save
+      @book = Book.new(book_params)
+      current_user.user_books << @book.user_books
+      if @book.save
         current_user.save
 
         redirect_to current_user
