@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-
   def new
     @book = Book.new
     @book.user_books.build
@@ -50,6 +49,7 @@ class BooksController < ApplicationController
   end
 
   def update
+
     book = Book.find(params[:id])
     binding.pry
     userbook = current_user.user_books.find_by(:book_id => book_params[:book_id])

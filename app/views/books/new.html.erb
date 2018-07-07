@@ -1,15 +1,6 @@
 <%= form_for @book do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
-  <%= f.label :author %>
-  <%= f.text_field :author %>
-  <br>
-  <%= f.label :volume_number %>
-  <%= f.text_field :volume_number %>
-  <br>
-  <br>
+  <%= render :partial => 'form', :locals=> {:f=>f} %>
 
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>
  <%= userbook_builder.hidden_field :user_id, user_id: current_user.id %>
