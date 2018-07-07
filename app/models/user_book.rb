@@ -7,5 +7,5 @@ class UserBook < ApplicationRecord
   end
 
 
-  
+
 end

@@ -1,7 +1,7 @@
 <h1>Welcome to your Collection, <%= current_user.name %></h1>
 <% if current_user.user_books == [] %>
 <%= "You don't have any books yet!" %>
-
+<%= link_to 'See all books', books %>
 <% else %>
 <h3>Here are all of your books</h3>
 <ul>
@@ -12,10 +12,11 @@
    <li>Book Author: <%= book.author %></li>
     <%= link_to 'View My Copy', user_book_path(id: book.id) %>
    <br>
-   
+
 <hr>
   <% end %>
 <% end %>
+<br>
 <%= link_to 'Add a New Book', new_user_book_path(current_user) %>
 
 <br>

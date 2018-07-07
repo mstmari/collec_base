@@ -9,10 +9,12 @@ class BooksController < ApplicationController
       @books = User.find(params[:user_id]).books.uniq
     else
       @books = Book.all
+
     end
   end
 
   def show
+    binding.pry
     @book = Book.find(params[:id])
     @userbook = current_user.user_books.where(:book_id => @book.id)
 
@@ -50,17 +52,23 @@ class BooksController < ApplicationController
 
   def update
 
-    book = Book.find(params[:id])
-    binding.pry
-    userbook = current_user.user_books.find_by(:book_id => book_params[:book_id])
+    #Figure out why your user_id/book_id are not being passed through params.
+    #should I restructure so that a book belongs to a user?
+    #How can I change to program so that one user can't
+    #make a change to a book and it change every instance of that book.
+    #maybe a user can't edit a book once it has been created and can ONLY edit a user_book, or get rid of the
+    #find_by in the create method and just create new a Book everytime and keep the edit functionality
 
-    userbook.update(book_params[:user_book_attributes])
+    book = Book.find(params[:id])
+    # binding.pry
+    # userbook = current_user.user_books.find_by(:book_id => book_params[:book_id])
+
+    # userbook.update(book_params[:user_book_attributes])
     book.update(book_params)
 
-    current_user.user_books << userbook
+    # current_user.user_books << userbook
 
-    current_user.save
-    #Figure out why your user_id/book_id are not being passed through params.
+    # current_user.save
 
     if book.save
       redirect_to book

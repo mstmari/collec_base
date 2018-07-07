@@ -4,9 +4,10 @@ class UsersController < ApplicationController
     if logged_in?
       redirect_to current_user
     else
-    @user = User.new
+      @user = User.new
+    end
   end
-end
+
 
   def new
     @user = User.new
@@ -28,6 +29,10 @@ end
     else
       render 'new'
     end
+  end
+
+  def most_valuble
+    @most_valuble = current_user.user_books.most_valuble
   end
 
   private

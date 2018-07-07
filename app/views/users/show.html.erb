@@ -1,8 +1,8 @@
 <h1>Welcome, <%= current_user.name %></h1>
 
-<%= @most_valuble %>
  <%= link_to 'Add a new copy of a Book', '/books/new' %>
  <br>
- <%= link_to 'See All My Books', user_books_path(current_user) %>
+ <%= link_to 'See My Collection', user_books_path(current_user) %>
  <br>
+ <%= link_to 'See all Books', binding.pry %>
  <%= button_to 'Logout', '/logout' %>

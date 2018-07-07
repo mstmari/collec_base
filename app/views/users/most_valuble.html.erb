@@ -1,0 +1,11 @@
+<ul>
+  <%= @most_valuble.map do |userbook| %>
+  <li><strong>Title:</strong> <%= userbook.book.title %></li>
+  <li><strong>Author:</strong> <%= userbook.book.author %></li>
+  <li><strong>Price:</strong> <%= userbook.price %></li>
+
+  <br>
+  <%= link_to 'View in My Collection', user_book_path(current_user, userbook) %>
+
+  <% end %>
+</ul>
