@@ -1,9 +1,10 @@
 <%= form_for @book do |f| %>
 
   <%= render :partial => 'form', :locals=> {:f=>f} %>
+  <%= f.hidden_field :owner_id, value: current_user.id %>
 
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>
- <%= userbook_builder.hidden_field :user_id, user_id: current_user.id %>
+ <%= userbook_builder.hidden_field :user_id, value: current_user.id %>
 
 
  <%= userbook_builder.label :condition %>

@@ -18,3 +18,7 @@
    margin: 20px;
 
  }
+
+ :error_explanation {
+   font-weight: bold;
+ }

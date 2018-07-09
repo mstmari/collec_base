@@ -4,7 +4,7 @@
 <% else %>
 
 <ul>
-  <%= @most_valuble.map do |userbook| %>
+  <% @most_valuble.each do |userbook| %>
   <li><strong>Title:</strong> <%= userbook.book.title %></li>
   <li><strong>Author:</strong> <%= userbook.book.author %></li>
   <li><strong>Description:</strong> <%= userbook.description %></li>
@@ -20,3 +20,4 @@
   <%= link_to 'View My Collection', user_books_path(current_user) %>
   <br>
   <%= link_to 'Back to My Profile', user_path(current_user) %>
+  <br>

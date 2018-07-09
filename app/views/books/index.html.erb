@@ -1,11 +1,10 @@
 <h1>Welcome to your Collection, <%= current_user.name %></h1>
-<% binding.pry %>
 <% if current_user.user_books == [] %>
 <%= "You don't have any books yet!" %>
 <% else %>
 <h3>Here are all of your books</h3>
 <ul>
-  <%= @books.map.with_index(1) do |book, i| %>
+  <% @books.each.with_index(1) do |book, i| %>
 <strong><%= i %></strong>
 
    <li>Book Title: <%= book.title %></li>
