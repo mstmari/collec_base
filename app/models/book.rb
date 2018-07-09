@@ -2,9 +2,8 @@ class Book < ApplicationRecord
   has_many :user_books
   has_many :users, :through => :user_books
 
-  validates :title, presence: true, uniqueness: true
-  validates :author, presence: true, uniqueness: true
-
+  validates :title, presence: true
+  validates :author, presence: true
 
   #accepts_nested_attributes_for :user_books #, reject_if: :all_blank
 

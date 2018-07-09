@@ -4,7 +4,6 @@
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>
  <%= userbook_builder.hidden_field :user_id, value: current_user.id %>
  <%= userbook_builder.hidden_field :book_id, value: @book.id %>
- <%= userbook_builder.hidden_field :id, value: @book.user_books[0].id %>
 
 
  <%= userbook_builder.label :condition %>
@@ -16,6 +15,6 @@
  <%= userbook_builder.label :price %>
  <%= userbook_builder.text_field :price %>
  <br>
- <%= f.submit 'Add Book' %>
+ <%= f.submit 'Edit Book' %>
  <% end %>
  <% end %>

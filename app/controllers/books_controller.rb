@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
 
   def create
-    # binding.pry
+    binding.pry
     # if
     #   @book = Book.find_by(title: book_params[:title])
     #   new_user_book = @book.user_books.build(book_params[:user_book_attributes])
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     #   current_user.save
     #
     #   redirect_to current_user
-
+    #
     # else
       @book = Book.new(book_params)
       current_user.user_books << @book.user_books
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
       else
         render 'new'
       end
-    #  end
+      # end
   end
 
   def edit
@@ -50,19 +50,21 @@ class BooksController < ApplicationController
   end
 
   def update
-
       book = Book.find(params[:id])
-       binding.pry
-      #  userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
+      # userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
+      # the above line of code finds the unique instance of a userbook by :id in order to update it,
+      # however, the :id coming through the hidden_field throws off the params and gives the uniqueness error.
+      # in order for the above method to work you have to pass the user_books.id through a hidden_field on the edit form.
+      # but then calling book.update(book_params) will break
+
        #  binding.pry
       #  userbook.update(book_params[:user_book_attributes])
-
-       book.update(book_params) if book.owner_id == current_user.id
+        if book.update_attributes(book_params)
+      #   if book.owner_id == current_user.id
 
 
     #  current_user.save
     # binding.pry
-     if book.save
       redirect_to book
     else
       render :edit
