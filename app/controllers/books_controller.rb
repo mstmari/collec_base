@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
 
   def create
-    binding.pry
+    # binding.pry
     # if
     #   @book = Book.find_by(title: book_params[:title])
     #   new_user_book = @book.user_books.build(book_params[:user_book_attributes])
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     #   current_user.save
     #
     #   redirect_to current_user
-    #
+
     # else
       @book = Book.new(book_params)
       current_user.user_books << @book.user_books
@@ -41,29 +41,27 @@ class BooksController < ApplicationController
       else
         render 'new'
       end
-    # end
+    #  end
   end
 
   def edit
-    @book = Book.find(params[:id])
+    userbook = UserBook.find(params[:id])
+    @book = userbook.book
   end
 
   def update
-    #Figure out why your user_id/book_id are not being passed through params.
-    #How can I change to program so that one user can't
-    #make a change to a book and it change every instance of that book.
-    #maybe a user can't edit a book once it has been created and can ONLY edit a user_book, or get rid of the
-    #find_by in the create method and just create new a Book everytime and keep the edit functionality
 
       book = Book.find(params[:id])
-       userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
-       userbook.update(book_params[:user_book_attributes])
+       binding.pry
+      #  userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
+       #  binding.pry
+      #  userbook.update(book_params[:user_book_attributes])
 
        book.update(book_params) if book.owner_id == current_user.id
 
 
     #  current_user.save
-binding.pry
+    # binding.pry
      if book.save
       redirect_to book
     else
@@ -76,7 +74,6 @@ binding.pry
   private
   def book_params
     params.require(:book).permit(:title, :author, :volume_number, :owner_id, :user_book_attributes =>[:condition, :description, :price, :user_id, :book_id, :id])
-
   end
 
 end

@@ -1,5 +1,4 @@
 <%= form_for @book do |f| %>
-
   <%= render :partial => 'form', :locals=> {:f=>f} %>
 
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>
