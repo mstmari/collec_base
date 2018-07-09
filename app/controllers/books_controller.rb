@@ -45,9 +45,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    binding.pry
     @book = Book.find(params[:id])
-    @userbook = @book.user_books.find_by(:user_id => current_user.id)
   end
 
   def update
@@ -58,17 +56,15 @@ class BooksController < ApplicationController
     #find_by in the create method and just create new a Book everytime and keep the edit functionality
 
       book = Book.find(params[:id])
-      binding.pry
-      userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
-      userbook.update(book_params[:user_book_attributes])
+       userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
+       userbook.update(book_params[:user_book_attributes])
 
-      # if book.owner_id == session_id
-      #  book.update(book_params)
+       book.update(book_params) if book.owner_id == current_user.id
 
 
-     current_user.save
-
-    if book.save
+    #  current_user.save
+binding.pry
+     if book.save
       redirect_to book
     else
       render :edit
