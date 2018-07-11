@@ -1,6 +1,6 @@
 <%= form_for @book do |f| %>
-
-  <%= render :partial => 'form', :locals=> {:f=>f} %>
+<% binding.pry %>
+<%= collection_select(:book, :title, Book.all, :id, :title)%>
   <%= f.hidden_field :owner_id, value: current_user.id %>
 
  <%= f.fields_for :user_book_attributes do |userbook_builder| %>

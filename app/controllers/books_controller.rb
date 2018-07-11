@@ -45,8 +45,8 @@ class BooksController < ApplicationController
   end
 
   def edit
-    userbook = UserBook.find(params[:id])
-    @book = userbook.book
+    binding.pry
+    @book = Book.find(params[:id])
   end
 
   def update
@@ -59,7 +59,8 @@ class BooksController < ApplicationController
 
        #  binding.pry
       #  userbook.update(book_params[:user_book_attributes])
-        if book.update_attributes(book_params)
+        if book.update(book_params)
+
       #   if book.owner_id == current_user.id
 
 

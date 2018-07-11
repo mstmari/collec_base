@@ -2,9 +2,12 @@
  <h1>Title: <%= @book.title %></h1>
  <h3>By: <%= @book.author %></h3>
  <h5>Volume: <%= @book.volume_number %></h5>
+ <% binding.pry %>
+  <%= link_to 'Edit Book', edit_user_book_path(current_user, @book) %>
  <hr>
 <h4>My Version(s):</h4>
   <% @userbook.each.with_index(1) do |book, i| %>
+
   <div>
     <strong>Copy Number: </strong><%= i %>
     <br>
@@ -14,7 +17,7 @@
     <br>
     <strong>Price: </strong><%= book.price %>
     <br>
-    <%= link_to 'Edit', edit_user_book_path(current_user.id, book) %>
+    <%= link_to 'Edit My Copy', binding.pry %>
 
 </div>
 
