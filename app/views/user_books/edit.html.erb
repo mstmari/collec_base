@@ -1,14 +1,6 @@
 <%= form_for @user_book, url: user_book_path(@user_book.user_id, @user_book) do |f| %>
 
+<%= render :partial => 'form', :locals=> {:f=>f} %>
 
- <%= f.label :condition %>
- <%= f.text_field :condition, {:html => name="title"} %>
- <br>
- <%= f.label :description %>
- <%= f.text_field :description, {:html => name="author"} %>
- <br>
- <%= f.label :price %>
- <%= f.text_field :price, {:html => name="volume_number"} %>
- <br>
- <%= f.submit 'Edit Book' %>
+<%= f.submit 'Edit Book' %>
  <% end %>
