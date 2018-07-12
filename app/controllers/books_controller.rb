@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
+  #  before_action: current_user.admin, only: [:new, :create]
+
   def new
+
     @book = Book.new
     @book.user_books.build
   end
@@ -13,60 +16,33 @@ class BooksController < ApplicationController
   end
 
   def show
+    binding.pry
     @book = Book.find(params[:id])
     @userbook = current_user.user_books.where(:book_id => @book.id)
   end
 
 
   def create
-    binding.pry
-    # if
-    #   @book = Book.find_by(title: book_params[:title])
-    #   new_user_book = @book.user_books.build(book_params[:user_book_attributes])
-    #
-    #   current_user.user_books << new_user_book
-    #
-    #   current_user.save
-    #
-    #   redirect_to current_user
-    #
-    # else
-      @book = Book.new(book_params)
-      current_user.user_books << @book.user_books
-      if @book.save
-        current_user.save
+    book = Book.new(book_params)
+    current_user.user_books << book.user_books
+    if book.save
 
-        redirect_to current_user
+      redirect_to current_user
 
       else
         render 'new'
       end
-      # end
+
   end
 
   def edit
-    binding.pry
-    @book = Book.find(params[:id])
+    @book = UserBook.find(params[:id])
   end
 
   def update
-      book = Book.find(params[:id])
-      # userbook = current_user.user_books.find(book_params[:user_book_attributes][:id])
-      # the above line of code finds the unique instance of a userbook by :id in order to update it,
-      # however, the :id coming through the hidden_field throws off the params and gives the uniqueness error.
-      # in order for the above method to work you have to pass the user_books.id through a hidden_field on the edit form.
-      # but then calling book.update(book_params) will break
-
-       #  binding.pry
-      #  userbook.update(book_params[:user_book_attributes])
-        if book.update(book_params)
-
-      #   if book.owner_id == current_user.id
-
-
-    #  current_user.save
-    # binding.pry
-      redirect_to book
+      book = UserBook.find(params[:id])
+      if book.update(condition: params[:user_book][:condition], description: params[:user_book][:description], price: params[:user_book][:price])
+      redirect_to user_books_path
     else
       render :edit
     end
@@ -76,7 +52,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :volume_number, :owner_id, :user_book_attributes =>[:condition, :description, :price, :user_id, :book_id, :id])
+    params.require(:book).permit(:id, :title, :author, :volume_number, :user_book_attributes =>[:condition, :description, :price, :user_id, :book_id, :id])
   end
 
 end
