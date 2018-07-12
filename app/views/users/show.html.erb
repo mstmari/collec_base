@@ -1,6 +1,9 @@
 <h1>Welcome, <%= current_user.name %></h1>
-
- <%= link_to 'Add A New Copy of a Book', '/books/new' %>
+<% if current_user.admin %>
+ <%= link_to 'Add A New Book', '/books/new' %>
+ <br>
+ <% end %>
+ <%= link_to 'Add a Copy of a Book' %>
  <br>
  <%= link_to 'See My Collection', user_books_path(current_user) %>
 

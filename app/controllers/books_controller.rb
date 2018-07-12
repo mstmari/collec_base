@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  #  before_action: current_user.admin, only: [:new, :create]
 
   def new
 
