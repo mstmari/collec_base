@@ -1,0 +1,30 @@
+
+ <h1>Title: <%= @book.title %></h1>
+ <h3>By: <%= @book.author %></h3>
+ <h5>Volume: <%= @book.volume_number %></h5>
+ <% if current_user.admin %>
+  <%= link_to 'Edit Book', edit_user_book_path(current_user, @book) %>
+  <% end %>
+ <hr>
+<h4>My Version(s):</h4>
+  <% @user_books.each.with_index(1) do |user_book, i| %>
+
+  <div>
+    <strong>Copy Number: </strong><%= i %>
+    <br>
+    <strong>Condition: </strong><%= user_book.condition %>
+    <br>
+    <strong>Description: </strong><%= user_book.description %>
+    <br>
+    <strong>Price: </strong><%= user_book.price %>
+    <br>
+    <%= link_to 'Edit My Copy', edit_user_book_path(current_user, user_book) %>
+
+</div>
+  <br>
+  <% end %>
+
+<br>
+<hr>
+<br>
+<%= link_to 'My Profile', current_user %>

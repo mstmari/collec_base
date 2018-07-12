@@ -1,6 +1,5 @@
-<%= form_for @book, url: user_book_path(@book.user_id, @book) do |f| %>
+<%= form_for @user_book, url: user_book_path(@user_book.user_id, @user_book) do |f| %>
 
- 
 
  <%= f.label :condition %>
  <%= f.text_field :condition, {:html => name="title"} %>
