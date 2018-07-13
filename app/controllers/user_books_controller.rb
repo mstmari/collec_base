@@ -28,14 +28,21 @@ class UserBooksController < ApplicationController
   end
 
   def update
-      book = UserBook.find(params[:id])
-      if book.update(user_books_params)
+      user_book = UserBook.find(params[:id])
+      if user_book.update(user_books_params)
        redirect_to user_books_path
     else
       render :edit
     end
   end
 
+  def destroy
+    user_book = UserBook.find(params[:id])
+    user_book.destroy
+    redirect_to user_books_path
+  end
+
+  private
   def user_books_params
     params.require(:user_book).permit(:condition, :description, :price)
   end

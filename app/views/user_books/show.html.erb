@@ -18,7 +18,8 @@
     <br>
     <strong>Price: </strong><%= user_book.price %>
     <br>
-    <%= link_to 'Edit My Copy', edit_user_book_path(current_user, user_book) %>
+    <%= link_to 'Edit My Copy', edit_user_book_path(current_user, user_book) %> |
+     <%= link_to 'Delete', user_book_path(current_user, user_book), method: :delete, data: { confirm: 'Are you sure?' }%>
 
 </div>
   <br>
