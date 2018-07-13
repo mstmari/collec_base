@@ -3,7 +3,7 @@
  <h3>By: <%= @book.author %></h3>
  <h5>Volume: <%= @book.volume_number %></h5>
  <% if current_user.admin %>
-  <%= link_to 'Edit Book', edit_user_book_path(current_user, @book) %>
+  <%= link_to 'Edit Book', edit_book_path(@book) %>
   <% end %>
  <hr>
 <h4>My Version(s):</h4>

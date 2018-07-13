@@ -19,4 +19,9 @@ def current_user
 end
 
    helper_method :current_user
+
+   def is_admin?
+     current_user.admin
+   end
+   helper_method :is_admin?
 end

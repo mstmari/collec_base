@@ -5,5 +5,12 @@
   <li><%= book.volume_number %></li>
 </ul>
 <%= link_to 'Add To My Collection', new_user_book_path(current_user, book_id: book) %>
+<br>
+<% if current_user.admin %>
+<%= link_to 'Edit Book', edit_book_path(book) %>
+<br>
+<%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }%>
+
+<% end %>
 <hr>
 <% end %>

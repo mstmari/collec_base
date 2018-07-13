@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get  '/most_valuble' => 'users#most_valuble'
   get  '/auth/facebook/callback' => 'sessions#create_facebook'
-  post  '/users/:id/books/new' => 'user_books#create'
+  post '/users/:id/books/new' => 'user_books#create'
 
   resources :users do
     resources :user_books, :path => "books", :as => :books

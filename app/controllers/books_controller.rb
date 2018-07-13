@@ -1,7 +1,18 @@
 class BooksController < ApplicationController
+   before_action :is_admin?
+
+   def edit
+     @book = Book.find(params[:id])
+   end
+
+   def update
+     book = Book.find(params[:id])
+     book.update(book_params)
+
+     redirect_to '/books'
+   end
 
   def new
-    
     @book = Book.new
   end
 
@@ -30,7 +41,11 @@ class BooksController < ApplicationController
   end
 
 
-
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to '/books'
+  end
 
 
   private
