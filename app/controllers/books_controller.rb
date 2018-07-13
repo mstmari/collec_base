@@ -1,16 +1,16 @@
 class BooksController < ApplicationController
-   before_action :is_admin?
+  before_action :is_admin?
 
-   def edit
-     @book = Book.find(params[:id])
-   end
+  def edit
+    @book = Book.find(params[:id])
+  end
 
-   def update
-     book = Book.find(params[:id])
-     book.update(book_params)
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
 
-     redirect_to '/books'
-   end
+    redirect_to '/books'
+  end
 
   def new
     @book = Book.new
@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
-
+  
   def show
     @book = Book.find(params[:id])
     @userbook = current_user.user_books.where(:book_id => @book.id)

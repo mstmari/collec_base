@@ -1,29 +1,29 @@
 
- <h1>Title: <%= @book.title %></h1>
- <h3>By: <%= @book.author %></h3>
- <h5>Volume: <%= @book.volume_number %></h5>
- <% if current_user.admin %>
-  <%= link_to 'Edit Book', edit_book_path(@book) %>
-  <% end %>
- <hr>
+<h1>Title: <%= @book.title %></h1>
+<h3>By: <%= @book.author %></h3>
+<h5>Volume: <%= @book.volume_number %></h5>
+<% if current_user.admin %>
+<%= link_to 'Edit Book', edit_book_path(@book) %>
+<% end %>
+<hr>
 <h4>My Version(s):</h4>
-  <% @user_books.each.with_index(1) do |user_book, i| %>
+<% @user_books.each.with_index(1) do |user_book, i| %>
 
-  <div>
-    <strong>Copy Number: </strong><%= i %>
-    <br>
-    <strong>Condition: </strong><%= user_book.condition %>
-    <br>
-    <strong>Description: </strong><%= user_book.description %>
-    <br>
-    <strong>Price: </strong><%= user_book.price %>
-    <br>
-    <%= link_to 'Edit My Copy', edit_user_book_path(current_user, user_book) %> |
-     <%= link_to 'Delete', user_book_path(current_user, user_book), method: :delete, data: { confirm: 'Are you sure?' }%>
+<div>
+  <strong>Copy Number: </strong><%= i %>
+  <br>
+  <strong>Condition: </strong><%= user_book.condition %>
+  <br>
+  <strong>Description: </strong><%= user_book.description %>
+  <br>
+  <strong>Price: </strong><%= user_book.price %>
+  <br>
+  <%= link_to 'Edit My Copy', edit_user_book_path(current_user, user_book) %> |
+  <%= link_to 'Delete', user_book_path(current_user, user_book), method: :delete, data: { confirm: 'Are you sure?' }%>
 
 </div>
-  <br>
-  <% end %>
+<br>
+<% end %>
 
 <br>
 <hr>

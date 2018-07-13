@@ -5,19 +5,19 @@
 <h3>Here are all of your books</h3>
 <ul>
   <% @books.each.with_index(1) do |book, i| %>
-<strong><%= i %></strong>
+  <strong><%= i %></strong>
 
-   <li>Book Title: <%= book.title %></li>
-   <li>Book Author: <%= book.author %></li>
-    <%= link_to 'View My Copy', user_book_path(id: book.id) %>
-   <br>
+  <li>Book Title: <%= book.title %></li>
+  <li>Book Author: <%= book.author %></li>
+  <%= link_to 'View My Copy', user_book_path(id: book.id) %>
+  <br>
 
-<hr>
+  <hr>
   <% end %>
-<% end %>
-<br>
-<%= link_to 'Add a New Book', '/books' %>
+  <% end %>
+  <br>
+  <%= link_to 'Add a New Book', '/books' %>
 
-<br>
-<%= link_to 'Back to My Profile', user_path(current_user) %>
+  <br>
+  <%= link_to 'Back to My Profile', user_path(current_user) %>
 </ul>
