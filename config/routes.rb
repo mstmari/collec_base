@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :user_books, :path => "books", :as => :books
   end
   resources :books
+  # user_books resource is aliased as "books" for better user experience.
+  # URL is now 'user/1/books/1 where the book id represents the canonical book.
+  # The User_book itself doesn't have an idea represented in the URL,
+  # becasue a user can have multiple copies of the same book
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

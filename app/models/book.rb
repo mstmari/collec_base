@@ -7,7 +7,7 @@ class Book < ApplicationRecord
 
 
   def user_book_attributes=(user_book_attributes)
-      i = self.user_books.build(user_book_attributes)
+      self.user_books.build(user_book_attributes)
   end
 
 

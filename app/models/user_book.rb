@@ -10,5 +10,4 @@ class UserBook < ApplicationRecord
     self.order(price: :desc).limit(1)
   end
 
-
 end
