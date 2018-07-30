@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get  '/most_valuble' => 'users#most_valuble'
   get  '/auth/facebook/callback' => 'sessions#create_facebook'
   post '/users/:id/books/new' => 'user_books#create'
+  get '/most_popular' => 'books#most_popular'
 
   resources :users do
     resources :user_books, :path => "books", :as => :books

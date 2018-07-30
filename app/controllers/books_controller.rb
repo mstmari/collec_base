@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
-  
+
   def show
     @book = Book.find(params[:id])
     @userbook = current_user.user_books.where(:book_id => @book.id)
@@ -47,6 +47,9 @@ class BooksController < ApplicationController
     redirect_to '/books'
   end
 
+  def most_popular
+    @most_popular_book = UserBook.most_popular
+  end
 
   private
   def book_params
